@@ -225,6 +225,7 @@ function tieneTresDigitos(numero){
   }else{
     return false;
   }
+  //sdad
 }
 
 function doWhile(numero) {
