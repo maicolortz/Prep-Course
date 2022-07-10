@@ -239,7 +239,7 @@ function deEuroAdolar(euro){
   //Escribe tu código aquí
   return euro*1.2;
 }
-//gola
+//golanpmasddas
 
 function esVocal(letra){
   //Escribe una función que reciba una letra y, si es una vocal, muestre el mensaje “Es vocal”. 
