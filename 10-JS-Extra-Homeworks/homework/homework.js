@@ -7,9 +7,11 @@ function deObjetoAmatriz(objeto){
   /*objeto({
       D: 1,
       B: 2,
-      C: 3
+      C: 3   
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  var arreglo=Object.entries(objeto);
+  return arreglo;
 }
 
 
@@ -18,6 +20,33 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  const objetoletra=[];
+        const numerodeveces=[];
+        const arreglofinal={};
+        for (let i = 0; i < string.length; i++) {
+            if (objetoletra.indexOf(string.charAt(i))===-1) {
+                objetoletra.push(string.charAt(i));
+            }
+                     //objetoletra[i]=string.charAt(i);
+                   
+        }
+        
+        for (let j = 0; j < objetoletra.length; j++) {
+            let cont=0;
+            for (let m = 0; m < string.length; m++) {
+                
+                if (objetoletra[j]===string.charAt(m)) {
+                cont++;
+                }
+            }
+            numerodeveces.push(cont);
+            
+        }
+        for (let i = 0; i < numerodeveces.length; i++) {
+            
+            arreglofinal[objetoletra[i]]=numerodeveces[i];
+        }
+        return arreglofinal;
 }
 
 
@@ -26,6 +55,22 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  let palabranueva="";
+            let minusculas="";
+            //funcion para saber si es mayuscula
+            function esMayuscula(letra){
+                return letra===letra.toUpperCase();
+            }
+            for (let i = 0; i < s.length; i++) {
+               if (esMayuscula(s.charAt(i))) {
+                palabranueva+=s.charAt(i);
+                
+               }else{
+                minusculas+=s.charAt(i);
+               }
+            
+            }
+            return palabranueva+minusculas;
 }
 
 
@@ -35,6 +80,46 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+  //let str="The Henry Challenge is close!";
+  let palabranueva="";
+  const arreglo=[];
+function esEspacio(letra){
+  return letra===" ";
+}
+function revierta(texto){
+  var texoinvertido="";
+  for (let i = texto.length-1;i>=0; i--) {
+      texoinvertido+=texto.charAt(i);
+      
+  }
+  return texoinvertido;
+}
+for (let i = 0; i < str.length; i++) {
+  ///la ultima palabra como no tiene espacio se guarda asi
+  if ((i+1)===str.length) {
+      palabranueva+=str.charAt(i);
+      arreglo.push(palabranueva);
+  }
+ //si tiene espacio en la letra
+  if (esEspacio(str.charAt(i))) {
+      //si antes no tenia espacio, se guarda la nueva palabra
+      if (!esEspacio(str.charAt(i-1))) {
+          arreglo.push(palabranueva);
+          
+      }
+      //no se guarda nada hasta que la palabra no tenga espacios
+      palabranueva="";
+  }else{//si no hay espacio, es una palabra nueva que iremos guardando
+   palabranueva+=str.charAt(i);
+  }
+}    
+for (let i = 0; i < arreglo.length; i++) {
+  arreglo[i]=revierta(arreglo[i]);
+  console.log(arreglo[i])
+}
+// console.log(esEspacio(str));          
+//console.log(arreglo.toString().replace(/,/g," "));
+return arreglo.toString().replace(/,/g," ");
 } 
 
 
@@ -43,6 +128,24 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  //let numero=12312;
+            let palabranumero="";
+           function revierta(texto){
+                 var texoinvertido="";
+                for (let i = texto.length-1;i>=0; i--) {
+                texoinvertido+=texto.charAt(i);
+                    
+                 }
+                return texoinvertido;
+            }
+            palabranumero=numero.toString();
+            if (palabranumero===revierta(palabranumero)) {
+              return "Es capicua";
+            }else{
+              return "No es capicua"
+            }
+            
+    
 }
 
 
