@@ -153,6 +153,10 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+ cadena=cadena.replace(/a|b|c/g,"");
+  return cadena;
+    
+  
 }
 
 
@@ -160,6 +164,29 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  const nuevo=[];
+  //const arr=["You", "are", "beautiful", "looking"];
+  
+
+  function devolverpalabramayor(numero){
+      let mayor=0;
+      let palabra="";
+      for (let i = numero.length-1;i>=0; i--) {
+          if (numero[i].length>mayor) {
+              mayor=numero[i].length;    
+              palabra=numero[i];     
+          }       
+      }  
+      return palabra;   
+  }
+  //guardo la longitud en una variable por que en el for voy
+  //a estar eliminando la posicion que ocupa la palabra con mas longitud 
+  let longitudoriginal=arr.length;
+  for (let i = 0; i < longitudoriginal; i++) {
+   nuevo.unshift(devolverpalabramayor(arr));
+    arr.splice(arr.indexOf(devolverpalabramayor(arr)),1);
+  }
+  return nuevo;
 }
 
 
@@ -169,6 +196,18 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  const arreglofinal=[];
+  for (let i = 0; i < arreglo1.length; i++) {
+      for (let j = 0; j < arreglo2.length; j++) {
+         if(arreglo1[i]===arreglo2[j]){
+          arreglofinal.push(arreglo1[i]);
+         }
+          
+      }
+      
+  }
+  return arreglofinal;
+
 }
 
 
